@@ -10,9 +10,9 @@ class OpeningHourServiceProvider extends CommonServiceProvider
     /**
      * @inherit
      */
-    public function register()
+    public function boot()
     {
-        parent::register();
+        parent::boot();
 
         \Illuminate\Database\Eloquent\Builder::macro('opening', function (): MorphMany {
             return app('amethyst')->createMacroMorphRelation($this, \Railken\Amethyst\Models\OpeningHour::class, 'opening', 'target');
