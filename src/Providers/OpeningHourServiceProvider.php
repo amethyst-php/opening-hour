@@ -13,9 +13,5 @@ class OpeningHourServiceProvider extends CommonServiceProvider
     public function boot()
     {
         parent::boot();
-
-        \Illuminate\Database\Eloquent\Builder::macro('opening', function (): MorphMany {
-            return app('amethyst')->createMacroMorphRelation($this, \Railken\Amethyst\Models\OpeningHour::class, 'opening', 'target');
-        });
     }
 }
