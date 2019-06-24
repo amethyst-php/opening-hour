@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/amethyst-opening-hour/">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Rubik|Open Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src='https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <link href='style.css' rel='stylesheet'>
+</head>
+<body>
+  <header>
+    <a class="btn purple">Switch to frontend docs</a>
+  </header>
+  <main>
+    <div class="sidebar" style='display: flex'>
+      <div style='flex-grow: 1'>
+      </div>
+      <div class="navigation">
+        <ul>
+          <li><a href=''>Introduction</a></li>
+                    <li><a href='entity/opening-hour/'>opening-hour</a></li>
+                  </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <h2>Result</h2>
+
+<p>Once you've got the result you should always check if an error has occurred, if not, retrieve the resource.</p>
+
+<pre><code class="php">use Railken\Amethyst\Managers\OpeningHourManager;
+
+$manager = new OpeningHourManager();
+
+$result = $manager-&gt;create([
+    "schedule" =&gt; [
+        "monday" =&gt; [
+            "09:00-12:00",
+            "13:00-18:00"
+        ],
+        "tuesday" =&gt; [
+            "09:00-12:00",
+            "13:00-18:00"
+        ],
+        "wednesday" =&gt; [
+            "09:00-12:00"
+        ],
+        "thursday" =&gt; [
+            "09:00-12:00",
+            "13:00-18:00"
+        ],
+        "friday" =&gt; [
+            "09:00-12:00",
+            "13:00-20:00"
+        ],
+        "saturday" =&gt; [
+            "09:00-12:00",
+            "13:00-16:00"
+        ],
+        "sunday" =&gt; [
+
+        ]
+    ],
+    "exceptions" =&gt; [
+        "2016-11-11" =&gt; [
+            "09:00-12:00"
+        ],
+        "2016-12-25" =&gt; [
+
+        ],
+        "01-01" =&gt; [
+
+        ],
+        "12-25" =&gt; [
+            "09:00-12:00"
+        ]
+    ],
+    "target_type" =&gt; "foo",
+    "target" =&gt; [
+        "name" =&gt; "Jovani Larkin",
+        "description" =&gt; "Aperiam quia molestiae rem. Non modi et eum et magni. Fugiat delectus aut et et.",
+        "bar" =&gt; [
+            "name" =&gt; "Merl Hansen",
+            "description" =&gt; "Eligendi nostrum qui voluptatibus enim quas. Sunt laudantium sunt beatae minus quo eum."
+        ]
+    ]
+]);
+
+if ($result-&gt;ok()) {
+
+    $resource = $result-&gt;getResource();
+
+} else {
+
+    // Loop through all errors
+    $result-&gt;getErrors()-&gt;map(function($error) {
+        return $error-&gt;toArray();
+    }))
+
+    // Retrieve an array of all errors
+    $result-&gt;getSimpleErrors();
+
+    /* The result is something like this:
+
+        [0] =&gt; Array
+            (
+                [code] =&gt; FIELD_NOT_DEFINED
+                [label] =&gt; field
+                [message] =&gt; The field is required
+                [value] =&gt;
+            )
+    */
+
+}
+</code></pre>
+
+<hr />
+
+<p><a href="index.html">Back</a></p>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
