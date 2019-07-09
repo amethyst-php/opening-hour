@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Managers;
+namespace Amethyst\Tests\Managers;
 
-use Railken\Amethyst\Fakers\OpeningHourFaker;
-use Railken\Amethyst\Managers\OpeningHourManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\OpeningHourFaker;
+use Amethyst\Managers\OpeningHourManager;
+use Amethyst\Tests\BaseTest;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
 
 class OpeningHourTest extends BaseTest
