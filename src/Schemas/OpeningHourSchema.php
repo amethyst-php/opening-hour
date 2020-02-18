@@ -18,11 +18,11 @@ class OpeningHourSchema extends Schema
             Attributes\IdAttribute::make(),
             Attributes\ArrayAttribute::make('schedule'),
             Attributes\ArrayAttribute::make('exceptions'),
-            Attributes\EnumAttribute::make('target_type', app('amethyst')->getMorphListable('opening-hour', 'target')),
+            Attributes\EnumAttribute::make('target_type', app('amethyst')->getDataNames()),
             Attributes\MorphToAttribute::make('target_id')
                 ->setRelationKey('target_type')
                 ->setRelationName('target')
-                ->setRelations(app('amethyst')->getMorphRelationable('opening-hour', 'target')),
+                ->setRelations(app('amethyst')->getDataManagers()),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),
