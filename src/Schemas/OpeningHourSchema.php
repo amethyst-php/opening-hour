@@ -18,7 +18,7 @@ class OpeningHourSchema extends Schema
             Attributes\IdAttribute::make(),
             Attributes\ArrayAttribute::make('schedule'),
             Attributes\ArrayAttribute::make('exceptions'),
-            Attributes\EnumAttribute::make('target_type', app('amethyst')->getDataNames()),
+            \Amethyst\Core\Attributes\DataNameAttribute::make('target_type'),
             Attributes\MorphToAttribute::make('target_id')
                 ->setRelationKey('target_type')
                 ->setRelationName('target')
